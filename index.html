@@ -8,21 +8,38 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        
         <img src="Images/Inquizzitive-nobg.jpg" class = "splashimg">
-        <div class = "buttoncontainer">
+        <div class="buttoncontainer">
             <div class = "center">
-                <button class ="button">Survival</button>
-                <button class ="button">Infinity</button>
-                <button class ="button">Leaderboards</button>
+                <a class = "button" href="survival.html">Survival</a>
+                <a class = "button" href="infinity.html">Infinity</a>
+                <a class = "button" href="leaderboards.html">Leaderboards</a>
             </div>
-        </div>
-        <audio id="player" src="Music/Menu.mp3"></audio>
-        <div class = "center">
-            <button id ="play-icon" onclick="document.getElementById('player').play()">Mute/Unmute</button>
+            <div class = "center">
+                <a class = "button" href="login.html">Login</a>
+            </div>
+            <audio id="player" src="Music/Menu.mp3"></audio>
+            <div class = "center">
+                <button class="icnbtn" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
+                <script type="text/javascript">
+                    function muteunmute(){
+                        var audio = document.getElementById("player");
+                        if(audio.paused)
+                        {
+                            audio.play();
+                        }
+                        else{
+                            audio.pause();
+                        }
+                    }
+                </script>
+            </div>
         </div>
     </body>
 </html>
