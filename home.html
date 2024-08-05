@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/jpg" href="Images/Favicon.jpg">
+        <title>Inquizzitive</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            * {
+          box-sizing: border-box;
+        }
+        body {
+          font-family: Trebuchet MS;
+          margin: 0;
+        }
+        .header {
+          padding: 50px;
+          text-align: center;
+          background-color: #fff615;
+          color: white;
+        }
+        .row {  
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .side {
+          flex: 20%;
+          background-color: white;
+          padding: 20px;
+        }
+        .main {
+          flex: 60%;
+          background-color: white;
+          padding: 20px;
+        }
+        .centerimg {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          object-fit: scale-down; 
+          max-width: 100%;
+        }
+        .centerheaderimg {
+          object-fit: scale-down; 
+          max-width: 100%;
+        }
+        .footer {
+          padding: 20px;
+          text-align: center;
+          background: #ddd;
+        }
+    
+        @media screen and (max-width: 700px) {
+          .row, .navbar {   
+            flex-direction: column;
+          }
+        }
+        </style>
+    </head>
+    <body>
+        <img src="images/Inquizzitive.jpg" width="1224" height="689">
+    </body>
+</html>
