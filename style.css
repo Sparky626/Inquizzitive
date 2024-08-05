@@ -65,6 +65,31 @@ body {
 .icnbtn:hover {
     color: white;
 }
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: black;
+    padding: 10px;
+    animation: fadeIn 1.75s
+  }
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    
+}
+.grid-item:hover {
+    color: #fff319;
+    background-color: black;
+}
 @media screen and (max-width: 700px) {
     
 }
@@ -84,5 +109,15 @@ body {
     to{
         transform: translateY(0px);
         opacity: 1;
+    }
+}
+@keyframes fadeOut{
+    from {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(-300px);
+        opacity: 0;
     }
 }

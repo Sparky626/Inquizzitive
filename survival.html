@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/jpg" href="Images/Favicon.jpg">
+        <title>Inquizzitive</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="style.css">
+    </head> 
+    <body>
+        <img src="Images/Inquizzitive-nobg.jpg" height = 350px width = 350px class = "splashimg">
+        <div class="grid-container">
+            <div class="grid-item" id = "GeneralKnowledge" onclick = "gamestart(this.id)">
+                General Knowledge
+            </div>
+            <div class="grid-item" id = "Books" onclick = "gamestart(this.id)">Books
+
+            </div>
+            <div class="grid-item" id = "Film" onclick = "gamestart(this.id)">Film
+
+            </div>
+            <div class="grid-item" id = "Music" onclick = "gamestart(this.id)">Music
+
+            </div>
+            <div class="grid-item" id = "MusicalsTheatres" onclick = "gamestart(this.id)">Musicals & Theatres
+
+            </div>
+            <div class="grid-item" id = "TV" onclick = "gamestart(this.id)">Television
+
+            </div>
+            <div class="grid-item" id = "VideoGames" onclick = "gamestart(this.id)">Video Games
+
+            </div>
+            <div class="grid-item" id = "BoardGames" onclick = "gamestart(this.id)">Board Games
+
+            </div>
+            <div class="grid-item" id = "ScienceNature" onclick = "gamestart(this.id)">Science and Nature
+
+            </div>
+            <div class="grid-item" id = "Computers" onclick = "gamestart(this.id)">Computers
+
+            </div>
+            <div class="grid-item" id = "Mathematics" onclick = "gamestart(this.id)">Mathematics
+
+            </div>
+            <div class="grid-item" id = "Mythology" onclick = "gamestart(this.id)">Mythology
+
+            </div>
+            <div class="grid-item" id = "Sports" onclick = "gamestart(this.id)">Sports
+
+            </div>
+            <div class="grid-item" id = "Geography" onclick = "gamestart(this.id)">Geography
+
+            </div>
+            <div class="grid-item" id = "History" onclick = "gamestart(this.id)">History
+
+            </div>
+            <div class="grid-item" id = "Politics" onclick = "gamestart(this.id)">Politics
+
+            </div>
+            <div class="grid-item" id = "Art" onclick = "gamestart(this.id)">Art
+
+            </div>
+            <div class="grid-item" id = "Celebrities" onclick = "gamestart(this.id)">Celebrities
+
+            </div>
+            <div class="grid-item" id = "Animals" onclick = "gamestart(this.id)">Animals
+
+            </div>
+            <div class="grid-item" id = "Vehicles" onclick = "gamestart(this.id)">Vehicles
+
+            </div>
+            <div class="grid-item" id = "Comics" onclick = "gamestart(this.id)">Comics
+
+            </div>
+            <div class="grid-item" id = "Gadgets" onclick = "gamestart(this.id)">Gadgets
+
+            </div>
+            <div class="grid-item" id = "AnimeManga" onclick = "gamestart(this.id)">Japanese Anime & Manga
+
+            </div>
+            <div class="grid-item" id = "CartoonAnimation" onclick = "gamestart(this.id)">Cartoon & Animations
+
+            </div>
+            <script type="text/javascript">
+                function gamestart(clicked_id){
+                    document.body.innerHTML = '';
+                }
+            </script>
+        </div>
+        <audio id="player" src="Music/Menu.mp3"></audio>
+            <div class = "center">
+                <button class="icnbtn" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
+                <script type="text/javascript">
+                    function muteunmute(){
+                        var audio = document.getElementById("player");
+                        if(audio.paused)
+                        {
+                            audio.play();
+                        }
+                        else{
+                            audio.pause();
+                        }
+                    }
+                </script>
+            </div>
+    </body>
+</html>
