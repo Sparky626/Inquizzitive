@@ -16,6 +16,19 @@ body {
     background-color: #fff319;
     transition: 1s;
 }
+.mainsplashimg {
+    display: block;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 80px;
+    object-fit: scale-down; 
+    max-width: 100%;
+    animation: fadeIn 1.5s;
+    /*animation: fadeIn 1.5s;
+    animation: slideInLeft 1.5s ease-in-out;*/
+   
+}
 .splashimg {
     display: block;
     margin-left: auto;
@@ -66,6 +79,10 @@ body {
     color: white;
 }
 .grid-container {
+    justify-content: center;
+    height: fit-content;
+    width: fit-content;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: black;
@@ -75,7 +92,7 @@ body {
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
+    padding: 10px;
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -89,6 +106,9 @@ body {
 .grid-item:hover {
     color: #fff319;
     background-color: black;
+}
+.fadeOut{
+    animation: fadeOut 1.5s;
 }
 @media screen and (max-width: 700px) {
     

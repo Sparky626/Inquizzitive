@@ -14,8 +14,8 @@
         <link rel="stylesheet" href="style.css">
     </head> 
     <body>
-        <img src="Images/Inquizzitive-nobg.jpg" height = 350px width = 350px class = "splashimg">
-        <div class="grid-container">
+        <img src="Images/Inquizzitive-nobg.jpg" height = 350px width = 350px class = "splashimg" id = "splashimg">
+        <div class="grid-container" id = "grid">
             <div class="grid-item" id = "GeneralKnowledge" onclick = "gamestart(this.id)">
                 General Knowledge
             </div>
@@ -88,15 +88,11 @@
             <div class="grid-item" id = "CartoonAnimation" onclick = "gamestart(this.id)">Cartoon & Animations
 
             </div>
-            <script type="text/javascript">
-                function gamestart(clicked_id){
-                    document.body.innerHTML = '';
-                }
-            </script>
         </div>
         <audio id="player" src="Music/Menu.mp3"></audio>
             <div class = "center">
                 <button class="icnbtn" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
+                <a class="icnbtn" href = "index.html"><i class= "material-icons">home</i></button>
                 <script type="text/javascript">
                     function muteunmute(){
                         var audio = document.getElementById("player");
@@ -107,6 +103,20 @@
                         else{
                             audio.pause();
                         }
+                    }
+                </script>
+                <script type="text/javascript">
+                    function gamestart(clicked_id){
+                        genre = clicked_id;
+                        grid = document.getElementById('grid');
+                        img = document.getElementById('splashimg');
+                        grid.classList.add('fadeOut');
+                        img.classList.add('fadeOut');
+                        setTimeout(function()
+                        {
+                            grid.style.display = "none";
+                            img.style.display = "none";
+                        }, 1500);x
                     }
                 </script>
             </div>
