@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="style.css">
     </head> 
     <body>
+        
         <img src="Images/Inquizzitive-nobg.jpg" height = 350px width = 350px class = "splashimg" id = "splashimg">
         <div class="grid-container" id = "grid">
             <div class="grid-item" id = "GeneralKnowledge" onclick = "gamestart(this.id)">
@@ -89,6 +90,20 @@
 
             </div>
         </div>
+        <div class="quiz" id ="quiz">
+            <h1>Simple Quiz</h1>
+            <div class = "quizqs">
+                <h2 id = "question">Question</h2>
+                <div id = "answer-buttons">
+                    <button class = "ansbtn">1</button>
+                    <button class = "ansbtn">2</button>
+                    <button class = "ansbtn">3</button>
+                    <button class = "ansbtn">4</button>
+                </div>
+                <button id="nxtbtn">Next Question</button>
+            </div>
+
+        </div>
         <audio id="player" src="Music/Menu.mp3"></audio>
             <div class = "center">
                 <button class="icnbtn" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
@@ -110,12 +125,17 @@
                         genre = clicked_id;
                         grid = document.getElementById('grid');
                         img = document.getElementById('splashimg');
+                        quiz = document.getElementById('quiz')
                         grid.classList.add('fadeOut');
                         img.classList.add('fadeOut');
                         setTimeout(function()
                         {
                             grid.style.display = "none";
                             img.style.display = "none";
+                            quiz.style.display = "block";
+                            quiz.classList.add('fadeIn');
+
+                            
                         }, 1500);x
                     }
                 </script>
