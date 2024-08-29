@@ -12,12 +12,12 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="style.css">
+        <script src = "script.js"></script>
     </head> 
     <body>
-        
         <img src="Images/Inquizzitive-nobg.jpg" height = 350px width = 350px class = "splashimg" id = "splashimg">
         <div class="grid-container" id = "grid">
-            <div class="grid-item" id = "GeneralKnowledge" onclick = "gamestart(this.id)">
+            <div class="grid-item" id = "General Knowledge" onclick = "gamestart(this.id)">
                 General Knowledge
             </div>
             <div class="grid-item" id = "Books" onclick = "gamestart(this.id)">Books
@@ -29,19 +29,19 @@
             <div class="grid-item" id = "Music" onclick = "gamestart(this.id)">Music
 
             </div>
-            <div class="grid-item" id = "MusicalsTheatres" onclick = "gamestart(this.id)">Musicals & Theatres
+            <div class="grid-item" id = "Musicals Theatres" onclick = "gamestart(this.id)">Musicals & Theatres
 
             </div>
             <div class="grid-item" id = "TV" onclick = "gamestart(this.id)">Television
 
             </div>
-            <div class="grid-item" id = "VideoGames" onclick = "gamestart(this.id)">Video Games
+            <div class="grid-item" id = "Video Games" onclick = "gamestart(this.id)">Video Games
 
             </div>
-            <div class="grid-item" id = "BoardGames" onclick = "gamestart(this.id)">Board Games
+            <div class="grid-item" id = "Board Games" onclick = "gamestart(this.id)">Board Games
 
             </div>
-            <div class="grid-item" id = "ScienceNature" onclick = "gamestart(this.id)">Science and Nature
+            <div class="grid-item" id = "Science Nature" onclick = "gamestart(this.id)">Science and Nature
 
             </div>
             <div class="grid-item" id = "Computers" onclick = "gamestart(this.id)">Computers
@@ -83,15 +83,15 @@
             <div class="grid-item" id = "Gadgets" onclick = "gamestart(this.id)">Gadgets
 
             </div>
-            <div class="grid-item" id = "AnimeManga" onclick = "gamestart(this.id)">Japanese Anime & Manga
+            <div class="grid-item" id = "Anime Manga" onclick = "gamestart(this.id)">Japanese Anime & Manga
 
             </div>
-            <div class="grid-item" id = "CartoonAnimation" onclick = "gamestart(this.id)">Cartoon & Animations
+            <div class="grid-item" id = "Cartoon Animation" onclick = "gamestart(this.id)">Cartoon & Animations
 
             </div>
         </div>
         <div class="quiz" id ="quiz">
-            <h1>Simple Quiz</h1>
+            <h1 id = "quizheader">Simple Quiz</h1>
             <div class = "quizqs">
                 <h2 id = "question">Question</h2>
                 <div id = "answer-buttons">
@@ -106,39 +106,8 @@
         </div>
         <audio id="player" src="Music/Menu.mp3"></audio>
             <div class = "center">
-                <button class="icnbtn" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
-                <a class="icnbtn" href = "index.html"><i class= "material-icons">home</i></button>
-                <script type="text/javascript">
-                    function muteunmute(){
-                        var audio = document.getElementById("player");
-                        if(audio.paused)
-                        {
-                            audio.play();
-                        }
-                        else{
-                            audio.pause();
-                        }
-                    }
-                </script>
-                <script type="text/javascript">
-                    function gamestart(clicked_id){
-                        genre = clicked_id;
-                        grid = document.getElementById('grid');
-                        img = document.getElementById('splashimg');
-                        quiz = document.getElementById('quiz')
-                        grid.classList.add('fadeOut');
-                        img.classList.add('fadeOut');
-                        setTimeout(function()
-                        {
-                            grid.style.display = "none";
-                            img.style.display = "none";
-                            quiz.style.display = "block";
-                            quiz.classList.add('fadeIn');
-
-                            
-                        }, 1500);x
-                    }
-                </script>
+                <button class="icnbtns" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
+                <a class="icnbtns" href = "index.html"><i class= "material-icons">home</i></button>
             </div>
     </body>
 </html>
