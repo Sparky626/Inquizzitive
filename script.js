@@ -37,7 +37,7 @@ function apicheck(){
         return response.json();
     })
     .then(data => {
-        document.getElementById('apidisplay').textContent = "Token: " + data.token;
+        document.getElementById('apidisplay').textContent = "API Accessible!";
     })
     .catch(error => {
         console.error('Error:', error);
@@ -67,7 +67,6 @@ function questionsetup(genreid,genre){
 }
 function survivalgameloop(genreid,genre){
     document.getElementById('quizheader').textContent = genre;
-
     (async () => {
         let active = true;
         const tokendata = await fetchAPIData('https://opentdb.com/api_token.php?command=request')
@@ -111,55 +110,58 @@ function survivalgameloop(genreid,genre){
                 nxt.style.display = "block";
                 nxt.addEventListener("click", (e) => {
                     nxt.style.display = "none";
+                })
             });
         });
     })()    
 }
 function infinitygameloop(genreid){
-    document.getElementById('quizheader').textContent = genreid;
+    document.getElementById('quizheader').textContent = genre;
     (async () => {
+        let active = true;
         const tokendata = await fetchAPIData('https://opentdb.com/api_token.php?command=request')
         const token = tokendata.token;
-        const quizdata = await fetchAPIData('https://opentdb.com/api.php?amount=10&token=' + token)
+        const quizdata = await fetchAPIData('https://opentdb.com/api.php?amount=1&token=' + token + "&category=" + genreid)
         const questions = quizdata.results;
         const q = questions[0].question;
         document.getElementById('question').textContent = decodeHtml(q);
         const correct = questions[0].correct_answer;
         const answers = questions[0].incorrect_answers;
+        const ansbtns = document.getElementById('answer-buttons');
+        const scorebox = document.getElementById('score');
+        var score = scorebox.textContent;
         answers.push(correct);
-        const shuffleanswers = questionshuffle(answers);
-        var currid = ""
-        console.log(question);
-        console.log(shuffleanswers);
-        console.log(correct);
-        console.log(shuffleanswers.length);
-        if (shuffleanswers.length < 3){
-            const ans1 = document.getElementById('ans1');
-            const ans2 = document.getElementById('ans2');
-            const ans3 = document.getElementById('ans3');
-            const ans4 = document.getElementById('ans4');
-            ans1.style.display = "block";
-            ans2.style.display = "block";
-            ans3.style.display = "none";
-            ans4.style.display = "none";
-
-        }
-        else{
-            const ans1 = document.getElementById('ans1');
-            const ans2 = document.getElementById('ans2');
-            const ans3 = document.getElementById('ans3');
-            const ans4 = document.getElementById('ans4');
-            ans1.style.display = "block";
-            ans2.style.display = "block";
-            ans3.style.display = "block";
-            ans4.style.display = "block";
-        }
-        for (let x in shuffleanswers){
-            console.log(x);
-            var num = parseInt(x);
-            currid = "ans" + (num+1);
-            document.getElementById(currid).textContent = decodeHtml(shuffleanswers[x]);
-        }
-        
+        answers.forEach(answer =>{
+            const button = document.createElement("button");
+            button.innerHTML = decodeHtml(answer);
+            button.classList.add("ansbtn");
+            button.id = decodeHtml(answer);
+            ansbtns.appendChild(button);
+            button.addEventListener("click", (e) => {
+                const clicked = e.target;
+                const nxt = document.getElementById('nxt');
+                if (clicked.textContent == decodeHtml(correct)){
+                    clicked.style.background = "green";
+                    clicked.style.color = "black";
+                    score++;
+                    scorebox.textContent = score;
+                }
+                else{
+                    clicked.style.background = "red";
+                    clicked.style.color = "black";
+                }
+                Array.from(ansbtns.children).forEach(button=>{
+                    if(button.textContent == decodeHtml(correct)){
+                        button.style.background = "green";
+                        button.style.color = "black";
+                    }
+                    button.disabled = true;
+                })
+                nxt.style.display = "block";
+                nxt.addEventListener("click", (e) => {
+                    nxt.style.display = "none";
+                })
+            });
+        });
     })()       
 }
