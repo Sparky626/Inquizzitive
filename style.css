@@ -24,7 +24,10 @@ h1, h2, h3, h4, h5, h6, p{
     cursor: pointer;
     transition: all 0.3s;
 }
-.ansbtn:hover{
+.ansbtn:disabled{
+    cursor:no-drop;
+}
+.ansbtn:hover:not([disabled]){
     background: #fff319;
     color:black;
 }
@@ -206,6 +209,16 @@ h1, h2, h3, h4, h5, h6, p{
     max-width: 600px;
     padding: 30px;
     width: 90%;
+}
+.scorecenter {
+    display: flex;
+    font-size: larger;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
 }
 .splashimg {
     animation: fadeIn 1.5s;
