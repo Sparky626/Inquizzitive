@@ -17,12 +17,15 @@ function gamestart(clicked_id){
     img.classList.add('fadeOut');
     setTimeout(function()
     {
+        
         grid.style.display = "none";
         img.style.display = "none";
         quiz.style.display = "block";
         quiz.classList.add('fadeIn');
         survivalgameloop(genre);
-    }, 100);
+            
+    }, 100)
+    
 }
 function apicheck(){
     fetch('https://opentdb.com/api_token.php?command=request')
@@ -48,6 +51,11 @@ async function fetchAPIData(link){
         console.error('Error fetching token data:', error);
     }
 }
+function decodeHtml(encoded) {
+    var text = document.createElement("textarea");
+    text.innerHTML = encoded;
+    return text.value;
+}
 function questionshuffle(answers){
     return answers.map((a) => ({ sort: Math.random(), value: a }))
         .sort((a, b) => a.sort - b.sort)
@@ -56,28 +64,95 @@ function questionshuffle(answers){
 function survivalgameloop(genreid){
     document.getElementById('quizheader').textContent = genreid;
     (async () => {
+        let score = 0;
+        const tokendata = await fetchAPIData('https://opentdb.com/api_token.php?command=request')
+        const token = tokendata.token;
+        const quizdata = await fetchAPIData('https://opentdb.com/api.php?amount=1&token=' + token)
+        const questions = quizdata.results;
+        const q = questions[0].question;
+        document.getElementById('question').textContent = decodeHtml(q);
+        const correct = questions[0].correct_answer;
+        const answers = questions[0].incorrect_answers;
+        const ansbtns = document.getElementById('answer-buttons');
+        answers.push(correct);
+        answers.forEach(answer =>{
+            const button = document.createElement("button");
+            button.innerHTML = decodeHtml(answer);
+            button.classList.add("ansbtn");
+            button.id = decodeHtml(answer);
+            ansbtns.appendChild(button);
+            button.addEventListener("click", (e) => {
+                const clicked = e.target;
+                const nxt = document.getElementById('nxt');
+                if (clicked.textContent == decodeHtml(correct)){
+                    clicked.style.background = "green";
+                    clicked.style.color = "black";
+                    score++;
+                    console.log(score);
+                }
+                else{
+                    clicked.style.background = "red";
+                    clicked.style.color = "black";
+                    nxt.style.display = "block";
+                    console.log(score);
+                }
+                
+            });
+        
+        });
+
+        
+    })()    
+}
+function answerclick(e){
+    
+
+}
+function infinitygameloop(genreid){
+    document.getElementById('quizheader').textContent = genreid;
+    (async () => {
         const tokendata = await fetchAPIData('https://opentdb.com/api_token.php?command=request')
         const token = tokendata.token;
         const quizdata = await fetchAPIData('https://opentdb.com/api.php?amount=10&token=' + token)
         const questions = quizdata.results;
         const q = questions[0].question;
-        document.getElementById('question').textContent = unescape(q);
+        document.getElementById('question').textContent = decodeHtml(q);
         const correct = questions[0].correct_answer;
         const answers = questions[0].incorrect_answers;
         answers.push(correct);
         const shuffleanswers = questionshuffle(answers);
         var currid = ""
+        console.log(question);
+        console.log(shuffleanswers);
+        console.log(correct);
+        console.log(shuffleanswers.length);
+        if (shuffleanswers.length < 3){
+            const ans1 = document.getElementById('ans1');
+            const ans2 = document.getElementById('ans2');
+            const ans3 = document.getElementById('ans3');
+            const ans4 = document.getElementById('ans4');
+            ans1.style.display = "block";
+            ans2.style.display = "block";
+            ans3.style.display = "none";
+            ans4.style.display = "none";
+
+        }
+        else{
+            const ans1 = document.getElementById('ans1');
+            const ans2 = document.getElementById('ans2');
+            const ans3 = document.getElementById('ans3');
+            const ans4 = document.getElementById('ans4');
+            ans1.style.display = "block";
+            ans2.style.display = "block";
+            ans3.style.display = "block";
+            ans4.style.display = "block";
+        }
         for (let x in shuffleanswers){
             console.log(x);
             var num = parseInt(x);
             currid = "ans" + (num+1);
-            document.getElementById(currid).textContent = shuffleanswers[x];
+            document.getElementById(currid).textContent = decodeHtml(shuffleanswers[x]);
         }
         
-        
-    })()    
-}
-
-function infinitygameloop(genreid){
-
+    })()       
 }

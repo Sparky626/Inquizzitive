@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6, p{
     text-align: center;
 }
 .fadeIn{
-    animation: fadeIn 1.5s;
+    animation: fadeIn 2s;
 }
 .fadeOut{
     animation: fadeOut 1.5s;
@@ -182,7 +182,7 @@ h1, h2, h3, h4, h5, h6, p{
     border-radius: 10px;
     color: #fff319;
     cursor: pointer;
-    display: block;
+    display: none;
     font-weight: 500;
     margin: 20px auto 0;
     padding: 10px;
@@ -206,9 +206,6 @@ h1, h2, h3, h4, h5, h6, p{
     max-width: 600px;
     padding: 30px;
     width: 90%;
-}
-.scorers{
-    
 }
 .splashimg {
     animation: fadeIn 1.5s;
