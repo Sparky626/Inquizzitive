@@ -1,3 +1,5 @@
+let genre;
+let genreid;
 function muteunmute(){
     var audio = document.getElementById("player");
     if(audio.paused)
@@ -8,40 +10,54 @@ function muteunmute(){
         audio.pause();
     }
 }
-function gamestart(clicked_id, clicked_genre){
+function sgamestart(clicked_id, clicked_genre){
     genreid = clicked_id;
     genre = clicked_genre;
     grid = document.getElementById('grid');
     img = document.getElementById('splashimg');
-    quiz = document.getElementById('quiz')
-    grid.classList.add('fadeOut');
-    img.classList.add('fadeOut');
+    quiz = document.getElementById('quiz');
+    loadimg = document.getElementById('loadimg');
+    loadimg.classList.add("fadeIn");
+    loadimg.style.display = "block";
     setTimeout(function()
     {
-        
+        grid.style.animation = "fadeOut 1.5s";
         grid.style.display = "none";
+        img.style.animation = "fadeOut 1.5s";
         img.style.display = "none";
-        quiz.style.display = "block";
-        quiz.classList.add('fadeIn');
-        survivalgameloop(genreid, genre);
+        quiz.classList.add("fadeIn");
+        apigrabber();
             
     }, 100)
     
 }
-function apicheck(){
-    fetch('https://opentdb.com/api_token.php?command=request')
-    .then(response => {
-        if (!response.ok) {
-        throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        document.getElementById('apidisplay').textContent = "API Accessible!";
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+function igamestart(clicked_id, clicked_genre){
+    genreid = clicked_id;
+    genre = clicked_genre;
+    grid = document.getElementById('grid');
+    img = document.getElementById('splashimg');
+    quiz = document.getElementById('quiz');
+    loadimg = document.getElementById('loadimg');
+    loadimg.classList.add("fadeIn");
+    loadimg.style.display = "block";
+    setTimeout(function()
+    {
+        grid.style.animation = "fadeOut 1.5s";
+        grid.style.display = "none";
+        img.style.animation = "fadeOut 1.5s";
+        img.style.display = "none";
+        quiz.classList.add("fadeIn");
+        apigrabber();
+            
+    }, 100)
+    
+}
+function apigrabber(){
+    (async () => {
+        const tokendata = await fetchAPIData('https://opentdb.com/api_token.php?command=request')
+        const token = tokendata.token;
+        questionsetup(token);
+    })()
 }
 async function fetchAPIData(link){
     try {
@@ -62,25 +78,26 @@ function questionshuffle(answers){
         .sort((a, b) => a.sort - b.sort)
         .map((a) => a.value); 
 }
-function questionsetup(genreid,genre){
-
-}
-function survivalgameloop(genreid,genre){
+function questionsetup(token){
     document.getElementById('quizheader').textContent = genre;
     (async () => {
-        let active = true;
-        const tokendata = await fetchAPIData('https://opentdb.com/api_token.php?command=request')
-        const token = tokendata.token;
+        console.log(token);
+        console.log("Request");
         const quizdata = await fetchAPIData('https://opentdb.com/api.php?amount=1&token=' + token + "&category=" + genreid)
         const questions = quizdata.results;
         const q = questions[0].question;
         document.getElementById('question').textContent = decodeHtml(q);
         const correct = questions[0].correct_answer;
-        const answers = questions[0].incorrect_answers;
+        let answers = questions[0].incorrect_answers;
         const ansbtns = document.getElementById('answer-buttons');
         const scorebox = document.getElementById('score');
         var score = scorebox.textContent;
+        const nextbutton = document.getElementById('nxt');
+        const quiz = document.getElementById('quiz');
+        loadimg.style.display = "none";
+        quiz.style.display = "block";
         answers.push(correct);
+        answers = questionshuffle(answers);
         answers.forEach(answer =>{
             const button = document.createElement("button");
             button.innerHTML = decodeHtml(answer);
@@ -89,7 +106,6 @@ function survivalgameloop(genreid,genre){
             ansbtns.appendChild(button);
             button.addEventListener("click", (e) => {
                 const clicked = e.target;
-                const nxt = document.getElementById('nxt');
                 if (clicked.textContent == decodeHtml(correct)){
                     clicked.style.background = "green";
                     clicked.style.color = "black";
@@ -107,30 +123,38 @@ function survivalgameloop(genreid,genre){
                     }
                     button.disabled = true;
                 })
-                nxt.style.display = "block";
-                nxt.addEventListener("click", (e) => {
-                    nxt.style.display = "none";
+                nextbutton.textContent = "Next Question";
+                nextbutton.style.display = "block";
+                nextbutton.addEventListener("click", (e) => {
+                    nextbutton.style.display = "none";
+                    nextbutton.replaceWith(nextbutton.cloneNode(false));
+                    resetstate(token);
                 })
             });
         });
     })()    
 }
-function infinitygameloop(genreid){
+
+function questionsetup(token){
     document.getElementById('quizheader').textContent = genre;
     (async () => {
-        let active = true;
-        const tokendata = await fetchAPIData('https://opentdb.com/api_token.php?command=request')
-        const token = tokendata.token;
+        console.log(token);
+        console.log("Request");
         const quizdata = await fetchAPIData('https://opentdb.com/api.php?amount=1&token=' + token + "&category=" + genreid)
         const questions = quizdata.results;
         const q = questions[0].question;
         document.getElementById('question').textContent = decodeHtml(q);
         const correct = questions[0].correct_answer;
-        const answers = questions[0].incorrect_answers;
+        let answers = questions[0].incorrect_answers;
         const ansbtns = document.getElementById('answer-buttons');
         const scorebox = document.getElementById('score');
         var score = scorebox.textContent;
+        const nextbutton = document.getElementById('nxt');
+        const quiz = document.getElementById('quiz');
+        loadimg.style.display = "none";
+        quiz.style.display = "block";
         answers.push(correct);
+        answers = questionshuffle(answers);
         answers.forEach(answer =>{
             const button = document.createElement("button");
             button.innerHTML = decodeHtml(answer);
@@ -139,7 +163,6 @@ function infinitygameloop(genreid){
             ansbtns.appendChild(button);
             button.addEventListener("click", (e) => {
                 const clicked = e.target;
-                const nxt = document.getElementById('nxt');
                 if (clicked.textContent == decodeHtml(correct)){
                     clicked.style.background = "green";
                     clicked.style.color = "black";
@@ -157,11 +180,30 @@ function infinitygameloop(genreid){
                     }
                     button.disabled = true;
                 })
-                nxt.style.display = "block";
-                nxt.addEventListener("click", (e) => {
-                    nxt.style.display = "none";
+                nextbutton.textContent = "Next Question";
+                nextbutton.style.display = "block";
+                nextbutton.addEventListener("click", (e) => {
+                    nextbutton.style.display = "none";
+                    nextbutton.replaceWith(nextbutton.cloneNode(false));
+                    resetstate(token);
                 })
             });
         });
-    })()       
+    })()    
+}
+function resetstate(token){
+    (async () => {
+        const ansbtns = document.getElementById('answer-buttons');
+        while(ansbtns.firstChild){
+            ansbtns.removeChild(ansbtns.firstChild);
+        }
+        quiz = document.getElementById('quiz');
+        loadimg = document.getElementById('loadimg');
+        loadimg.style.display = "block";
+        quiz.style.display = "none";
+        setTimeout(function()
+        {
+            questionsetup(token);       
+        }, 2000)
+    })()
 }

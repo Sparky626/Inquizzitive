@@ -17,97 +17,102 @@
     <body>
         <img src="Images/Inquizzitive-nobg.jpg" height = 350px width = 350px class = "splashimg" id = "splashimg">
         <div class="grid-container" id = "grid">
-            <div class="grid-item" id = "General Knowledge" onclick = "gamestart(this.id)">
+            <div class="grid-item" id = "9" onclick = "igamestart(this.id,this.textContent)">
                 General Knowledge
             </div>
-            <div class="grid-item" id = "Books" onclick = "gamestart(this.id)">Books
+            <div class="grid-item" id = "10" onclick = "igamestart(this.id,this.textContent)">Books
 
             </div>
-            <div class="grid-item" id = "Film" onclick = "gamestart(this.id)">Film
+            <div class="grid-item" id = "11" onclick = "igamestart(this.id,this.textContent)">Film
 
             </div>
-            <div class="grid-item" id = "Music" onclick = "gamestart(this.id)">Music
+            <div class="grid-item" id = "12" onclick = "igamestart(this.id,this.textContent)">Music
 
             </div>
-            <div class="grid-item" id = "Musicals Theatres" onclick = "gamestart(this.id)">Musicals & Theatres
+            <div class="grid-item" id = "13" onclick = "igamestart(this.id,this.textContent)">Musicals & Theatres
 
             </div>
-            <div class="grid-item" id = "TV" onclick = "gamestart(this.id)">Television
+            <div class="grid-item" id = "14" onclick = "igamestart(this.id,this.textContent)">Television
 
             </div>
-            <div class="grid-item" id = "Video Games" onclick = "gamestart(this.id)">Video Games
+            <div class="grid-item" id = "15" onclick = "igamestart(this.id,this.textContent)">Video Games
 
             </div>
-            <div class="grid-item" id = "Board Games" onclick = "gamestart(this.id)">Board Games
+            <div class="grid-item" id = "16" onclick = "igamestart(this.id,this.textContent)">Board Games
 
             </div>
-            <div class="grid-item" id = "Science Nature" onclick = "gamestart(this.id)">Science and Nature
+            <div class="grid-item" id = "17" onclick = "igamestart(this.id,this.textContent)">Science and Nature
 
             </div>
-            <div class="grid-item" id = "Computers" onclick = "gamestart(this.id)">Computers
+            <div class="grid-item" id = "18" onclick = "igamestart(this.id,this.textContent)">Computers
 
             </div>
-            <div class="grid-item" id = "Mathematics" onclick = "gamestart(this.id)">Mathematics
+            <div class="grid-item" id = "19" onclick = "igamestart(this.id,this.textContent)">Mathematics
 
             </div>
-            <div class="grid-item" id = "Mythology" onclick = "gamestart(this.id)">Mythology
+            <div class="grid-item" id = "20" onclick = "igamestart(this.id,this.textContent)">Mythology
 
             </div>
-            <div class="grid-item" id = "Sports" onclick = "gamestart(this.id)">Sports
+            <div class="grid-item" id = "21" onclick = "igamestart(this.id,this.textContent)">Sports
 
             </div>
-            <div class="grid-item" id = "Geography" onclick = "gamestart(this.id)">Geography
+            <div class="grid-item" id = "22" onclick = "igamestart(this.id,this.textContent)">Geography
 
             </div>
-            <div class="grid-item" id = "History" onclick = "gamestart(this.id)">History
+            <div class="grid-item" id = "23" onclick = "igamestart(this.id,this.textContent)">History
 
             </div>
-            <div class="grid-item" id = "Politics" onclick = "gamestart(this.id)">Politics
+            <div class="grid-item" id = "24" onclick = "igamestart(this.id,this.textContent)">Politics
 
             </div>
-            <div class="grid-item" id = "Art" onclick = "gamestart(this.id)">Art
+            <div class="grid-item" id = "25" onclick = "igamestart(this.id,this.textContent)">Art
 
             </div>
-            <div class="grid-item" id = "Celebrities" onclick = "gamestart(this.id)">Celebrities
+            <div class="grid-item" id = "26" onclick = "igamestart(this.id,this.textContent)">Celebrities
 
             </div>
-            <div class="grid-item" id = "Animals" onclick = "gamestart(this.id)">Animals
+            <div class="grid-item" id = "27" onclick = "igamestart(this.id,this.textContent)">Animals
 
             </div>
-            <div class="grid-item" id = "Vehicles" onclick = "gamestart(this.id)">Vehicles
+            <div class="grid-item" id = "28" onclick = "igamestart(this.id,this.textContent)">Vehicles
 
             </div>
-            <div class="grid-item" id = "Comics" onclick = "gamestart(this.id)">Comics
+            <div class="grid-item" id = "29" onclick = "igamestart(this.id,this.textContent)">Comics
 
             </div>
-            <div class="grid-item" id = "Gadgets" onclick = "gamestart(this.id)">Gadgets
+            <div class="grid-item" id = "30" onclick = "igamestart(this.id,this.textContent)">Gadgets
 
             </div>
-            <div class="grid-item" id = "Anime Manga" onclick = "gamestart(this.id)">Japanese Anime & Manga
+            <div class="grid-item" id = "31" onclick = "igamestart(this.id,this.textContent)">Japanese Anime & Manga
 
             </div>
-            <div class="grid-item" id = "Cartoon Animation" onclick = "gamestart(this.id)">Cartoon & Animations
+            <div class="grid-item" id = "32" onclick = "igamestart(this.id,this.textContent)">Cartoon & Animations
 
             </div>
+        </div>
+        <div class = "center">
+            <img src="Images/Inquizzitive-nobg-logo.png" height = 350px width = 350px class = "loadimg" id = "loadimg">
         </div>
         <div class="quiz" id ="quiz">
             <h1 id = "quizheader">Simple Quiz</h1>
             <div class = "quizqs">
-                <h2 id = "question">Question</h2>
+                <h2 id = "question"></h2>
                 <div id = "answer-buttons">
-                    <button class = "ansbtn" id = "ans1">Answer 1</button>
-                    <button class = "ansbtn" id = "ans2">Answer 2</button>
-                    <button class = "ansbtn" id = "ans3">Answer 3</button>
-                    <button class = "ansbtn" id = "ans4">Answer 4</button>
+                    
                 </div>
-                <button class="nxtbtn">Next Question</button>
+                <button class="nxtbtn" id = "nxt">Next Question</button>
             </div>
-
+            <div class = "scorecenter">
+                <p>Score:</p>
+                <p id = "score">0</p>
+            </div>
         </div>
-        <audio id="player" src="Music/Menu.mp3"></audio>
+        
             <div class = "center">
+                <audio id="player" src="Music/Menu.mp3"></audio>
                 <button class="icnbtns" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
                 <a class="icnbtns" href = "index.html"><i class= "material-icons">home</i></button>
             </div>
+            
     </body>
 </html>
