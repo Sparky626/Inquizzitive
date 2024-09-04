@@ -21,9 +21,7 @@ function sgamestart(clicked_id, clicked_genre){
     loadimg.style.display = "block";
     setTimeout(function()
     {
-        grid.style.animation = "fadeOut 1.5s";
         grid.style.display = "none";
-        img.style.animation = "fadeOut 1.5s";
         img.style.display = "none";
         quiz.classList.add("fadeIn");
         apigrabber();
@@ -37,16 +35,16 @@ function igamestart(clicked_id, clicked_genre){
     grid = document.getElementById('grid');
     img = document.getElementById('splashimg');
     quiz = document.getElementById('quiz');
+    exit = document.getElementById('exit');
     loadimg = document.getElementById('loadimg');
     loadimg.classList.add("fadeIn");
     loadimg.style.display = "block";
     setTimeout(function()
     {
-        grid.style.animation = "fadeOut 1.5s";
         grid.style.display = "none";
-        img.style.animation = "fadeOut 1.5s";
         img.style.display = "none";
         quiz.classList.add("fadeIn");
+        exit.style.display = "block";
         apigrabber();
             
     }, 100)

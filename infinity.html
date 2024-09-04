@@ -94,13 +94,16 @@
             <img src="Images/Inquizzitive-nobg-logo.png" height = 350px width = 350px class = "loadimg" id = "loadimg">
         </div>
         <div class="quiz" id ="quiz">
-            <h1 id = "quizheader">Simple Quiz</h1>
+            <h1 id = "quizheader"></h1>
             <div class = "quizqs">
                 <h2 id = "question"></h2>
                 <div id = "answer-buttons">
                     
                 </div>
-                <button class="nxtbtn" id = "nxt">Next Question</button>
+                <div class = "center">    
+                    <button class="extbtn" id = "exit" onclick="location.href='index.html'">End Loop!</button>
+                    <button class="nxtbtn" id = "nxt" >Next Question</button>
+                </div>
             </div>
             <div class = "scorecenter">
                 <p>Score:</p>
