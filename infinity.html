@@ -101,7 +101,7 @@
                     
                 </div>
                 <div class = "center">    
-                    <button class="extbtn" id = "exit" onclick="location.href='index.html'">End Loop!</button>
+                    <button class="extbtn" id = "exit" onclick="endGame()">End Loop!</button>
                     <button class="nxtbtn" id = "nxt" >Next Question</button>
                 </div>
             </div>
@@ -109,6 +109,11 @@
                 <p>Score:</p>
                 <p id = "score">0</p>
             </div>
+        </div>
+        <div id = "gameend" class = "center" style="display: none; padding-bottom: 0;">
+            <img src="Images/Inquizzitive-nobg-logo.png" height = 350px width = 350px class = "endimg" id = "endimg">
+            <h1 id = "gameover">Infinity Ended!</h1>
+            <h1 id = "fscore">Final Score: </h1>
         </div>
         <div class = "center">
             <audio id="player" src="Music/Menu.mp3"></audio>

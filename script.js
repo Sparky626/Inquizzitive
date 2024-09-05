@@ -1,6 +1,7 @@
 let genre;
 let genreid;
 let mode;
+let score;
 function muteunmute(){
     var audio = document.getElementById("player");
     if(audio.paused)
@@ -92,7 +93,7 @@ function questionsetup(token){
         let answers = questions[0].incorrect_answers;
         const ansbtns = document.getElementById('answer-buttons');
         const scorebox = document.getElementById('score');
-        var score = scorebox.textContent;
+        score = scorebox.textContent;
         const nextbutton = document.getElementById('nxt');
         const quiz = document.getElementById('quiz');
         loadimg.style.display = "none";
@@ -157,7 +158,7 @@ function resetstate(token){
         }, 2000)
     })()
 }
-function endGame(score){
+function endGame(){
     quiz = document.getElementById('quiz');
     quiz.style.display = "none";
     endimg = document.getElementById('loadimg');
@@ -167,5 +168,4 @@ function endGame(score){
     gameend.style.display= "block";
     fscore = document.getElementById('fscore');
     fscore.innerHTML = "Final Score: " + score;
-
 }
