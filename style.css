@@ -73,6 +73,14 @@ h1, h2, h3, h4, h5, h6, p{
     height: auto;
     display: inline-block;
 }
+.endimg{
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    object-fit: scale-down;
+    padding: 10px
+}
 .extbtn{
     background: black;
     border: 1px solid #fff319;
@@ -96,6 +104,10 @@ h1, h2, h3, h4, h5, h6, p{
 }
 .fadeOut{
     animation: fadeOut 2.0s;
+}
+.game-over{
+    animation: fadeIn 1.5s;
+
 }
 .grid-container {
     justify-content: center;

@@ -98,9 +98,7 @@
             <div class = "quizqs">
                 <h2 id = "question"></h2>
                 <div id = "answer-buttons">
-                    
                 </div>
-                
                 <button class="nxtbtn" id = "nxt">Next Question</button>
             </div>
             <div class = "scorecenter">
@@ -108,12 +106,16 @@
                 <p id = "score">0</p>
             </div>
         </div>
+        <div id = "gameend" class = "center" style="display: none; padding-bottom: 0;">
+            <img src="Images/Inquizzitive-nobg-logo.png" height = 350px width = 350px class = "endimg" id = "endimg">
+            <h1 id = "gameover">Game Over</h1>
+            <h1 id = "fscore">Final Score: </h1>
+        </div>
+        <div class = "center">
+            <audio id="player" src="Music/Menu.mp3"></audio>
+            <button class="icnbtns" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
+            <a class="icnbtns" href = "index.html"><i class= "material-icons">home</i></button>
+        </div>
         
-            <div class = "center">
-                <audio id="player" src="Music/Menu.mp3"></audio>
-                <button class="icnbtns" id="sound" onclick="muteunmute()"><i class= "material-icons">volume_up</i></button>
-                <a class="icnbtns" href = "index.html"><i class= "material-icons">home</i></button>
-            </div>
-            
     </body>
 </html>

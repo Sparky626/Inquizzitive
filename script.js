@@ -1,5 +1,6 @@
 let genre;
 let genreid;
+let mode;
 function muteunmute(){
     var audio = document.getElementById("player");
     if(audio.paused)
@@ -13,6 +14,7 @@ function muteunmute(){
 function sgamestart(clicked_id, clicked_genre){
     genreid = clicked_id;
     genre = clicked_genre;
+    mode = 'survival';
     grid = document.getElementById('grid');
     img = document.getElementById('splashimg');
     quiz = document.getElementById('quiz');
@@ -32,6 +34,7 @@ function sgamestart(clicked_id, clicked_genre){
 function igamestart(clicked_id, clicked_genre){
     genreid = clicked_id;
     genre = clicked_genre;
+    mode = 'infinity';
     grid = document.getElementById('grid');
     img = document.getElementById('splashimg');
     quiz = document.getElementById('quiz');
@@ -79,8 +82,8 @@ function questionshuffle(answers){
 function questionsetup(token){
     document.getElementById('quizheader').textContent = genre;
     (async () => {
-        console.log(token);
-        console.log("Request");
+        //console.log(token);
+        //console.log("Request");
         const quizdata = await fetchAPIData('https://opentdb.com/api.php?amount=1&token=' + token + "&category=" + genreid)
         const questions = quizdata.results;
         const q = questions[0].question;
@@ -124,66 +127,15 @@ function questionsetup(token){
                 nextbutton.textContent = "Next Question";
                 nextbutton.style.display = "block";
                 nextbutton.addEventListener("click", (e) => {
-                    nextbutton.style.display = "none";
-                    nextbutton.replaceWith(nextbutton.cloneNode(false));
-                    resetstate(token);
-                })
-            });
-        });
-    })()    
-}
-
-function questionsetup(token){
-    document.getElementById('quizheader').textContent = genre;
-    (async () => {
-        console.log(token);
-        console.log("Request");
-        const quizdata = await fetchAPIData('https://opentdb.com/api.php?amount=1&token=' + token + "&category=" + genreid)
-        const questions = quizdata.results;
-        const q = questions[0].question;
-        document.getElementById('question').textContent = decodeHtml(q);
-        const correct = questions[0].correct_answer;
-        let answers = questions[0].incorrect_answers;
-        const ansbtns = document.getElementById('answer-buttons');
-        const scorebox = document.getElementById('score');
-        var score = scorebox.textContent;
-        const nextbutton = document.getElementById('nxt');
-        const quiz = document.getElementById('quiz');
-        loadimg.style.display = "none";
-        quiz.style.display = "block";
-        answers.push(correct);
-        answers = questionshuffle(answers);
-        answers.forEach(answer =>{
-            const button = document.createElement("button");
-            button.innerHTML = decodeHtml(answer);
-            button.classList.add("ansbtn");
-            button.id = decodeHtml(answer);
-            ansbtns.appendChild(button);
-            button.addEventListener("click", (e) => {
-                const clicked = e.target;
-                if (clicked.textContent == decodeHtml(correct)){
-                    clicked.style.background = "green";
-                    clicked.style.color = "black";
-                    score++;
-                    scorebox.textContent = score;
-                }
-                else{
-                    clicked.style.background = "red";
-                    clicked.style.color = "black";
-                }
-                Array.from(ansbtns.children).forEach(button=>{
-                    if(button.textContent == decodeHtml(correct)){
-                        button.style.background = "green";
-                        button.style.color = "black";
+                    if (mode == 'survival' && clicked.style.background == "red"){
+                        endGame(score);
                     }
-                    button.disabled = true;
-                })
-                nextbutton.textContent = "Next Question";
-                nextbutton.style.display = "block";
-                nextbutton.addEventListener("click", (e) => {
-                    nextbutton.style.display = "none";
-                    nextbutton.replaceWith(nextbutton.cloneNode(false));
-                    resetstate(token);
+                    else{
+                        nextbutton.style.display = "none";
+                        nextbutton.replaceWith(nextbutton.cloneNode(false));
+                        resetstate(token);
+                    }
+                    
                 })
             });
         });
@@ -204,4 +156,16 @@ function resetstate(token){
             questionsetup(token);       
         }, 2000)
     })()
+}
+function endGame(score){
+    quiz = document.getElementById('quiz');
+    quiz.style.display = "none";
+    endimg = document.getElementById('loadimg');
+    endimg.style.display = "block";
+    gameend = document.getElementById('gameend');
+    gameend.classList.add('fadeIn');
+    gameend.style.display= "block";
+    fscore = document.getElementById('fscore');
+    fscore.innerHTML = "Final Score: " + score;
+
 }
