@@ -155,7 +155,7 @@ function resetstate(token){
         setTimeout(function()
         {
             questionsetup(token);       
-        }, 2000)
+        }, 3000)
     })()
 }
 function endGame(){
