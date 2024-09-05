@@ -311,7 +311,7 @@ input:hover{
     object-fit: scale-down;
     padding: 30px;
 }
-@media screen and (max-width: 700px), (max-height: 700px) {
+@media screen and (max-width: 300px), (max-height: 700px) {
     
 }
 @keyframes fadeIn{
