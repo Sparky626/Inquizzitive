@@ -1,7 +1,7 @@
 # Inquizzitive
 Web Quiz Game that uses Open Trivia DB to generate questions.
 
-Gamemodes:
+# Game Modes:
 
 Survival
 - See how many questions you can answer correctly without getting any wrong.
@@ -9,7 +9,7 @@ Survival
 Infinity
 - Answer as many questions as you can for practice.
 
-Features:
+# Features:
 
 Login
 - You will able to login and save your highest scores and have a chance to be placed on the leaderboard!
